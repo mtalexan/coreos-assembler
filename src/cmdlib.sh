@@ -15,8 +15,9 @@ else
     export SUDO=
     export SUDO_W_ENV=
     fake-sudo() {
+        # pass thru the exit code implicitly
         set -e
-        $*
+        "$@"
     }
     export -f fake-sudo
     # Spoof 'sudo' in the environment to go to our wrapper that does nothing instead, including a sudo_w_env that drops the -E options as well.
